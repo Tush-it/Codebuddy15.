@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>codebuddy15 — Tushar Bharadwaj</title>
+  <meta name="description" content="Tushar Bharadwaj — Full-stack developer building fast, interactive, and modern digital products." />
+  <meta name="keywords" content="Tushar Bharadwaj, codebuddy15, Web Developer, Portfolio, Data Dashboards, App Developer, SEO, Freelance Developer India" />
+  <meta name="author" content="Tushar Bharadwaj" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --clr-primary: #121212;          /* Almost Black */
+      --clr-primary-light: #2f2b2b;    /* Dark Grey */
+      --clr-muted: #4a4a4a;            /* Darker Medium Grey */
+      --clr-bg-light: #e0e0e0;         /* Darker Light Grey */
+      --clr-bg-dark: #c2c2c2;          /* Darker Grey */
+      --clr-white: #ffffff;
+      --ff-body: 'Inter', sans-serif;
+    }
+
+    /* Custom cursor styles */
+    body {
+      cursor: none; /* Hide default cursor */
+      font-family: var(--ff-body);
+      background: var(--clr-bg-light);
+      color: var(--clr-primary);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-color: var(--clr-primary);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, background-color 0.3s ease;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      will-change: transform;
+    }
+    /* Bigger cursor on hover of interactive elements */
+    a:hover ~ .custom-cursor,
+    button:hover ~ .custom-cursor,
+    .btn:hover ~ .custom-cursor {
+      transform: translate(-50%, -50%) scale(2);
+      background-color: var(--clr-primary-light);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body, h1, h2, h3, p {
+      margin: 0;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .wrapper {
+      width: min(90%, 70rem);
+      margin: auto;
+    }
+
+    /* Header and nav */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--clr-white);
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(18, 18, 18, 0.1);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .nav__links {
+      display: flex;
+      gap: 1.75rem;
+      font-weight: 700;
+      color: var(--clr-primary-light);
+    }
+    .nav__link:hover {
+      color: var(--clr-primary);
+      transition: color 0.3s ease;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--clr-primary);
+    }
+
+    /* Hero Section with pattern */
+    .hero {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 4rem 1rem;
+      color: var(--clr-primary);
+      background-color: var(--clr-bg-dark);
+      background-image:
+        repeating-radial-gradient(circle at 25% 25%, rgba(18, 18, 18, 0.05) 0, transparent 20px),
+        repeating-linear-gradient(45deg, rgba(18, 18, 18, 0.03) 0, transparent 10px, transparent 20px, rgba(18, 18, 18, 0.03) 20px);
+    }
+    .hero__title {
+      font-size: clamp(2.75rem, 7vw, 4.5rem);
+      margin-bottom: 1rem;
+      animation: fadeIn 2s ease forwards;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+    .hero__subtitle {
+      font-size: 1.4rem;
+      max-width: 55ch;
+      margin-bottom: 2.5rem;
+      animation: fadeIn 3s ease forwards;
+      color: var(--clr-muted);
+      font-weight: 500;
+    }
+    .btn {
+      background: var(--clr-primary);
+      color: var(--clr-white);
+      padding: 0.85em 2.5em;
+      border-radius: 999px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 5px 15px rgba(18, 18, 18, 0.3);
+    }
+    .btn:hover {
+      background: var(--clr-primary-light);
+      color: var(--clr-white);
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(44, 44, 44, 0.5);
+    }
+
+    /* Sections with pattern watermark backgrounds */
+    section {
+      padding: 6rem 1rem;
+      position: relative;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+    #services {
+      background-color: var(--clr-white);
+      background-image:
+        url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="80" stroke="%23121212" stroke-opacity="0.05" stroke-width="3" fill="none"/></svg>');
+    }
+    #contact {
+      background-color: var(--clr-bg-light);
+      background-image:
+        url('data:image/svg+xml;utf8,<svg width="150" height="150" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="150" rx="30" stroke="%234a4a4a" stroke-opacity="0.07" stroke-width="4" fill="none"/></svg>');
+    }
+
+    .section__title {
+      font-size: 2.25rem;
+      text-align: center;
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+      color: var(--clr-primary);
+      letter-spacing: 0.05em;
+    }
+    .section__text {
+      text-align: center;
+      max-width: 65ch;
+      margin-inline: auto;
+      color: var(--clr-muted);
+      font-weight: 500;
+      font-size: 1.125rem;
+    }
+
+    /* Grid for projects */
+    .grid {
+      display: grid;
+      gap: 2.25rem;
+      margin-top: 3.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Project cards with new shadows and border */
+    .project-card {
+      background: var(--clr-bg-light);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(18, 18, 18, 0.07);
+      border: 2px solid transparent;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(18, 18, 18, 0.2);
+      border-color: var(--clr-primary-light);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      height: 160px;
+    }
+    .project-card h3 {
+      font-weight: 700;
+      color: var(--clr-primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+    .project-card p {
+      font-weight: 500;
+      color: var(--clr-muted);
+      font-size: 1rem;
+    }
+
+    /* Contact form styling */
+    .contact-form {
+      max-width: 34rem;
+      margin: auto;
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      background: var(--clr-white);
+      box-shadow: 0 20px 40px rgba(18, 18, 18, 0.1);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.9em 1em;
+      font-family: inherit;
+      border: 2px solid #d1d5db;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--clr-primary-light);
+      outline: none;
+      box-shadow: 0 0 8px var(--clr-primary-light);
+    }
+    .contact-form button {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--clr-muted);
+      padding: 2.5rem 1rem;
+      font-weight: 500;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrapper nav">
+      <a href="#" class="logo">codebuddy15</a>
+      <ul class="nav__links">
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#services">Work</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="wrapper">
+      <h1 class="hero__title">Hi, I'm Tushar Bharadwaj</h1>
+      <p class="hero__subtitle">Data & Web Developer creating stunning websites, dashboards, and applications for your business growth.</p>
+      <a href="#contact" class="btn">Start Your Project</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrapper" data-aos="fade-up">
+      <h2 class="section__title">My Work</h2>
+      <p class="section__text">Explore my projects across web development, dashboards, apps, backend systems, and more.</p>
+
+      <div class="grid">
+        <div class="project-card" data-aos="zoom-in">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Website Design" />
+          <h3>Website Design</h3>
+          <p>Clean and responsive websites using HTML, CSS, JavaScript, React & Tailwind.</p>
+        </div>
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Dashboard" />
+          <h3>Data Dashboards</h3>
+          <p>Insightful dashboards created with Python, Tableau, and Power BI.</p>
+        </div>
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Portfolio" />
+          <h3>Portfolio Projects</h3>
+          <p>Impactful personal and business portfolios to showcase talent and work.</p>
+        </div>
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="App Development" />
+          <h3>App Development</h3>
+          <p>Mobile-first progressive web apps (PWAs) with seamless UX/UI.</p>
+        </div>
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80" alt="Backend" />
+          <h3>Backend Development</h3>
+          <p>Scalable server-side systems with Django, Node.js, and RESTful APIs.</p>
+        </div>
+        <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
+          <img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=600&q=80" alt="Frontend" />
+          <h3>Frontend Engineering</h3>
+          <p>Pixel-perfect interfaces using JavaScript, React, and modern design systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrapper" data-aos="fade-up">
+      <h2 class="section__title">Let's Connect</h2>
+      <form class="contact-form" id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Describe your project..." required></textarea>
+        <button class="btn" type="submit">📧 Send Email</button>
+        <button class="btn" type="button" onclick="sendWhatsApp()">💬 Send via WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> codebuddy15. Crafted by Tushar Bharadwaj.
+  </footer>
+
+  <!-- Custom cursor element -->
+  <div class="custom-cursor"></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const mailtoLink = `mailto:it.tushar30@gmail.com?subject=New Inquiry from ${encodeURIComponent(
+        name
+      )}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+
+      window.location.href = mailtoLink;
+    });
+
+    function sendWhatsApp() {
+      const name = document.getElementById("name").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const whatsappNumber = "917982797030";
+      const text = `Hi Tushar, I'm ${name}. Here's my project details: ${message}`;
+      const link = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      window.open(link, "_blank");
+    }
+
+    // Custom cursor JS
+    const cursor = document.querySelector('.custom-cursor');
+    let mouseX = 0;
+    let mouseY = 0;
+    let posX = 0;
+    let posY = 0;
+
+    function animateCursor() {
+      posX += (mouseX - posX) * 0.15;
+      posY += (mouseY - posY) * 0.15;
+      cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(animateCursor);
+    }
+
+    window.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    animateCursor();
+  </script>
+</body>
+</html>
+
+
+
+
